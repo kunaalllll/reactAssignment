@@ -11,20 +11,28 @@ const Card = ({info}) => {
             return (
               <div key={e.show.id} className="card">
                 <img
-                  src={e.show.image?.medium || "https://placehold.co/600x400"}
+                  src={
+                    e.show.image?.medium ||
+                    "https://placehold.co/125x175?text=Movie+Name"
+                  }
                   className="card-img-top"
                   alt="..."
                 />
-                <div className="card-body">
-                  <h5 className="card-title">{e.show.name}</h5>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: e.show.summary.substring(0,200) }}
-                  ></div>
-                    <button>
-                        <Link to={`/details/${e.show.id}`}>
-                        Click to know more</Link>
-                        </button>
-                </div>
+                <h1 className="card-title">
+                  Name: <span className="name">{e.show.name}</span>
+                </h1>
+                <h3>
+                  Rating:{" "}
+                  <span className="rating">{e.show.rating.average}</span>
+                </h3>
+                <h3>
+                  Premiered:
+                  <span className="premiered"> {e.show.premiered}</span>
+                </h3>
+
+                <button className="card-button">
+                  <Link to={`/details/${e.show.id}`}>Click to know more</Link>
+                </button>
               </div>
             );
           })}
